@@ -12,7 +12,11 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use("/", routes);
+app.use("/unsplash", routes);
+
+app.get("/", (req, res) =>
+  res.json(200).json({ message: "The server is running" })
+);
 
 const PORT = process.env.PORT || 5000;
 const URL = process.env.DB_URL;
@@ -24,6 +28,3 @@ mongoose.connect(URL).then(() => {
     );
   });
 });
-
-// yesu2001
-// SwM2imKNNpKe1fPp
